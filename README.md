@@ -53,6 +53,43 @@ end
 Now BMICalculator class holds the logic for calculation of the BMI and Person class  only stores the info about person. This complies to the SRP, because, every class has it's own responsibility.
 
 
+Open/closed principle
+---------------------
+
+One software entity (class/module) must be open for extension but closed for modification.
+
+Let's see another example:
+
+class Grade
+  def report
+    #logic_for_generating_grade_report
+  end
+
+  def print
+  	report.to_json
+  end
+end
+
+Here in this example, if we need to change the format of the grade report htats get printed, we need to change the code in the Grade Class, which is not a good practice.
+
+class Grade
+  def report
+    #logic_for_generating_grade_report
+  end
+
+  def print(formatter)
+  	formatter.format report
+  end
+end
+
+In the above example, we are passsing the object of the type of the format you need to the Print method so that you dont want to change the code every time you need a new print format thus 
+
+
+Liskov substitution principle
+-----------------------------
+
+
+
 
 
 
