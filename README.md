@@ -88,6 +88,40 @@ In the above example, we are passsing the object of the type of the format you n
 Liskov substitution principle
 -----------------------------
 
+Classes that are derived must be substitutable fro their base class i.e if S is subclass of T then objects of type T may be replaced with objects of type S.
+
+class Vehicle
+  def strat
+  	Vehicle started
+  end
+
+  def stop
+  	Vehicle stopped
+  end
+end
+
+class Car
+  def start
+  	Car started
+  end
+
+  def end
+    Car stopped
+  end
+end
+
+
+In the above example, Vehicle and Car classes have the same interfaces and hence we can substitute the subclass with base class like below.
+
+car1 = Vehicle.new
+car2 = Car.new
+
+So by knowing the interface of a vehicle we can find out the interfaces of class Car.
+
+
+
+
+
 
 
 
