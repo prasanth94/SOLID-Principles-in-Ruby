@@ -91,7 +91,7 @@ Liskov substitution principle
 Classes that are derived must be substitutable fro their base class i.e if S is subclass of T then objects of type T may be replaced with objects of type S.
 
 class Vehicle
-  def strat
+  def start
   	Vehicle started
   end
 
@@ -117,6 +117,79 @@ car1 = Vehicle.new
 car2 = Car.new
 
 So by knowing the interface of a vehicle we can find out the interfaces of class Car.
+
+
+Interface segregation principle
+------------------------------
+
+A client should not be depend on a class, that has an interface, that client does not use.
+If it depends, then client should be modified everytime when there is a change in the class.
+
+In the below example rating_value method in Employee class is partially used by class SoftwareEngineer and class Intern which should be done according to Interface segregation principle. 
+
+class Employee
+  def salary_value
+  	#Calculate salary logic
+    return salary
+  end
+
+  def rating_value
+    #calculate rating
+  	return rating
+  end
+
+  def training_grade
+    #Calulate training grade
+    return grade
+  end
+end
+
+
+class SoftwareEngineer < Employee
+  def details
+    @employee.salary_value
+    @employee.rating_value
+  end
+end
+
+class Intern < Employee
+	def details 
+	  @employees.training_grade
+	end 
+end
+
+In order to avoid this bad practice we can split the interface in to two as shown below.
+
+class Employee
+  def salary_value
+    return salary
+  end
+
+  def rating_value
+  	return rating
+  end
+
+end
+
+class SoftwareEngineer < Employee
+  def details
+    @employee.salary_value
+    @employee.rating_value
+  end
+end
+
+class Trainee
+  def training_grade
+    #Calulate training grade
+    return grade
+  end
+end
+
+class Intern < Trainee
+	def details 
+	  @trainee.training_grade
+	end 
+end
 
 
 
