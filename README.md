@@ -3,16 +3,13 @@ SOLID PRINCIPLES IN RUBY
 
 S.O.L.I.D STANDS FOR:
 
-S – Single-responsiblity principle 
-
+S – Single-responsiblity principle
 O – Open-closed principle
-
 L – Liskov substitution principle
-
 I – Interface segregation principle
-
 D – Dependency Inversion Principle
 
+S – Single-responsiblity principle 
 
 
 Applying these principles in programming will allow us to write better quality code and therefore be a better developer.
@@ -28,9 +25,7 @@ class Person
   attr_accessor :name, :age, :height, :weight
   def initialize(args)
     @name = args[:name]
-    @age = args[:age]
     @height = args[:height]
-    @weight = args[:weight]
   end
 
   def bmi_calculation
@@ -38,17 +33,15 @@ class Person
   end
 end
 
+
 This is not a good way of coding as Person class contains the logic that calculates BMI of that person.The responsibility of Person is to hold info/logic about the Person, not the BMI. 
 
 class Person
   attr_accessor :name, :age, :height, :weight
   def initialize(args)
     @name = args[:name]
-    @age = args[:age]
     @height = args[:height]
-    @weight = args[:weight]
   end
-
 end
 
 class BMICalculator
