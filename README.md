@@ -192,6 +192,36 @@ class Intern < Trainee
 end
 
 
+Dependency Inversion principle
+------------------------------
+
+High-level modules should not depend on low-level modules. Both should depend on abstractions and also abstractions should not depend upon details. Details should depend upon abstractions.
+
+Here in the below example, since AreaCalculator object is creating inside the method of class Rectangle creates a dependency from the Rectangle class to AreaCalculator.
+
+class Rectangle
+	attr_accessor :length, :width
+	def area_of_rectangle
+	 AreaCalculator.new.area self
+	end
+end
+
+class AreaCalculator
+  def area
+    #Area calculation
+  end
+end
+
+We can solve the above problem with dependency injection like shown below.
+
+class Rectangle
+	attr_accessor :length, :width
+	def area_of_rectangle(area_calculator: AreaCalculator.new)
+	 area_calculator.area self
+	end
+end
+
+
 
 
 
