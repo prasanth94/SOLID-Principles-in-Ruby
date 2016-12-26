@@ -32,10 +32,10 @@ class Person
     weight / height**2
   end
 end
-
+```ruby
 
 This is not a good way of coding as Person class contains the logic that calculates BMI of that person.The responsibility of Person is to hold info/logic about the Person, not the BMI. 
-
+```ruby
 class Person
   attr_accessor :name, :age, :height, :weight
   def initialize(args)
@@ -49,7 +49,7 @@ class BMICalculator
     weight / height**2
   end
 end
-
+```ruby
 Now BMICalculator class holds the logic for calculation of the BMI and Person class  only stores the info about person. This complies to the SRP, because, every class has it's own responsibility.
 
 
@@ -59,7 +59,7 @@ Open/closed principle
 One software entity (class/module) must be open for extension but closed for modification.
 
 Let's see another example:
-
+```ruby
 class Grade
   def report
     #logic_for_generating_grade_report
@@ -69,9 +69,9 @@ class Grade
   	report.to_json
   end
 end
-
+```ruby
 Here in this example, if we need to change the format of the grade report htats get printed, we need to change the code in the Grade Class, which is not a good practice.
-
+```ruby
 class Grade
   def report
     #logic_for_generating_grade_report
@@ -81,7 +81,7 @@ class Grade
   	formatter.format report
   end
 end
-
+```ruby
 In the above example, we are passsing the object of the type of the format you need to the Print method so that you dont want to change the code every time you need a new print format thus 
 
 
@@ -89,7 +89,7 @@ Liskov substitution principle
 -----------------------------
 
 Classes that are derived must be substitutable fro their base class i.e if S is subclass of T then objects of type T may be replaced with objects of type S.
-
+```ruby
 class Vehicle
   def start
   	Vehicle started
@@ -109,13 +109,12 @@ class Car
     Car stopped
   end
 end
-
-
+```ruby
 In the above example, Vehicle and Car classes have the same interfaces and hence we can substitute the subclass with base class like below.
-
+```ruby
 car1 = Vehicle.new
 car2 = Car.new
-
+```ruby
 So by knowing the interface of a vehicle we can find out the interfaces of class Car.
 
 
@@ -126,7 +125,7 @@ A client should not be depend on a class, that has an interface, that client doe
 If it depends, then client should be modified everytime when there is a change in the class.
 
 In the below example rating_value method in Employee class is partially used by class SoftwareEngineer and class Intern which should be done according to Interface segregation principle. 
-
+```ruby
 class Employee
   def salary_value
   	#Calculate salary logic
@@ -157,9 +156,9 @@ class Intern < Employee
 	  @employees.training_grade
 	end 
 end
-
+```ruby
 In order to avoid this bad practice we can split the interface in to two as shown below.
-
+```ruby
 class Employee
   def salary_value
     return salary
@@ -191,14 +190,14 @@ class Intern < Trainee
 	end 
 end
 
-
+```ruby
 Dependency Inversion principle
 ------------------------------
 
 High-level modules should not depend on low-level modules. Both should depend on abstractions and also abstractions should not depend upon details. Details should depend upon abstractions.
 
 Here in the below example, since AreaCalculator object is creating inside the method of class Rectangle creates a dependency from the Rectangle class to AreaCalculator.
-
+```ruby
 class Rectangle
 	attr_accessor :length, :width
 	def area_of_rectangle
@@ -211,16 +210,16 @@ class AreaCalculator
     #Area calculation
   end
 end
-
+```ruby
 We can solve the above problem with dependency injection like shown below.
-
+```ruby
 class Rectangle
 	attr_accessor :length, :width
 	def area_of_rectangle(area_calculator: AreaCalculator.new)
 	 area_calculator.area self
 	end
 end
-
+```ruby
 
 
 
