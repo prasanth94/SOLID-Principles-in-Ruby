@@ -100,12 +100,12 @@ class Vehicle
   end
 end
 
-class Car
+class Car < vehicle
   def start
   	Car started
   end
 
-  def end
+  def stop
     Car stopped
   end
 end
